@@ -8,7 +8,7 @@
  */
 int _printf(const char *format, ...)
 {
-	unsigned int k = 0, ses = 0, ibuf = 0;
+	unsigned int k = 0, len = 0, ibuf = 0;
 	va_list arguments;
 	int (*function)(va_list, char *, unsigned int);
 	char *buffer;
@@ -32,20 +32,20 @@ int _printf(const char *format, ...)
 				{
 					if (format[k + 1] == ' ' && !format[k + 2])
 						return (-1);
-					buf_con(buffer, format[k], ibuf), ses++, k--;
+					buf_con(buffer, format[k], ibuf), len++, k--;
 				}
 				else
 				{
-					ses += function(arguments, buffer, ibuf);
+					len += function(arguments, buffer, ibuf);
 					k += ev_print_func(format, k + 1);
 				}
 			} k++;
 		}
 		else
-			buf_con(buffer, format[k], ibuf), ses++;
-		for (ibuf = ses; ibuf > 1024; ibuf -= 1024)
+			buf_con(buffer, format[k], ibuf), len++;
+		for (ibuf = len; ibuf > 1024; ibuf -= 1024)
 			;
 	}
 	print_buf(buffer, ibuf), free(buffer), va_end(arguments);
-	return (ses);
+	return (len);
 }
