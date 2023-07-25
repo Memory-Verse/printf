@@ -13,7 +13,7 @@
  * Description: struct that stores pointers to a
  * printer functions.
  */
-typedef struct print
+typedef struct format
 {
 	char *type_arg;
 	int (*f)(va_list, char *, unsigned int);
