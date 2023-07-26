@@ -1,5 +1,5 @@
 .\" Manpage for _printf.
-.TH _printf 3 "25-07-2023" "1.0" "Program Manual for _printf"
+.TH _printf 3 "18 April 2022" "1.0" "Program Manual for _printf"
 .SH NAME
  _printf - formatted output conversion and print data.
 .SH SYNOPSIS
@@ -11,43 +11,46 @@
 .BI "#include <unistd.h>"
 .PP
 .BI "int _printf(const char *format, ...);"
-.BI "int print_character(va_list arguments, char *buf, unsigned int ibuf);"
-.BI "int print_string(va_list arguments, char *buf, unsigned int ibuf);"
-.BI "int print_int(va_list arguments, char *buf, unsigned int ibuf);"
-.BI "int print_dec_bnr(va_list arguments, char *buf, unsigned int ibuf);"
-.BI "int print_unt_int(va_list arguments, char *buf, unsigned int ibuf);"
-.BI "int print_dec_oct(va_list arguments, char *buf, unsigned int ibuf);"
-.BI "int print_hexdec(va_list arguments, char *buf, unsigned int ibuf);"
-.BI "int print_dechex(va_list arguments, char *buf, unsigned int ibuf);"
-.BI "int print_lupx(va_list arguments, char *buf, unsigned int ibuf);"
-.BI "int print_shint(va_list arguments, char *buf, unsigned int ibuf);"
-.BI "int rev(va_list arguments, char *buf, unsigned int ibuf);"
-.BI "int print_shunt(va_list arguments, char *buf, unsigned int ibuf);"
-.BI "int print_hoct(va_list arguments, char *buf, unsigned int ibuf);"
-.BI "int print_shhex(va_list arguments, char *buf, unsigned int ibuf);"
-.BI "int print_hupx(va_list arguments, char *buf, unsigned int ibuf);"
-.BI "int print_int_sym(va_list arguments, char *buf, unsigned int ibuf);"
-.BI "int print_noct(va_list arguments, char *buf, unsigned int ibuf);"
-.BI "int print_strv(va_list arguments, char *buf, unsigned int ibuf);"
-.BI "int print_address(va_list arguments, char *buf, unsigned int ibuf);"
-.BI "int rot(va_list arguments, char *buf, unsigned int ibuf);"
-.BI "int print_long_int(va_list arguments, char *buf, unsigned int ibuf);"
-.BI "int print_lunt(va_list arguments, char *buf, unsigned int ibuf);"
-.BI "int print_loct(va_list arguments, char *buf, unsigned int ibuf);"
 .BI "int print_prg(va_list __attribute__((unused)), char *, unsigned int);"
-.BI "int print_lhex(va_list arguments, char *buf, unsigned int ibuf);"
+.BI "int print_chr(va_list arguments, char *buf, unsigned int ibuf);"
+.BI "int print_str(va_list arguments, char *buf, unsigned int ibuf);"
+.BI "int print_int(va_list arguments, char *buf, unsigned int ibuf);"
+.BI "int print_bnr(va_list arguments, char *buf, unsigned int ibuf);"
+.BI "int print_unt(va_list arguments, char *buf, unsigned int ibuf);"
+.BI "int print_oct(va_list arguments, char *buf, unsigned int ibuf);"
 .BI "int print_hex(va_list arguments, char *buf, unsigned int ibuf);"
-.BI "int print_upper_hex(va_list arguments, char *buf, unsigned int ibuf);"
-.BI "int print_sint(va_list arguments, char *buf, unsigned int ibuf);"
+.BI "int print_upx(va_list arguments, char *buf, unsigned int ibuf);"
+.BI "int print_usr(va_list arguments, char *buf, unsigned int ibuf);"
+.BI "int print_add(va_list arguments, char *buf, unsigned int ibuf);"
+.BI "int print_rev(va_list arguments, char *buf, unsigned int ibuf);"
+.BI "int print_rot(va_list arguments, char *buf, unsigned int ibuf);"
+.BI "int prinlint(va_list arguments, char *buf, unsigned int ibuf);"
+.BI "int prinlunt(va_list arguments, char *buf, unsigned int ibuf);"
+.BI "int prinloct(va_list arguments, char *buf, unsigned int ibuf);"
+.BI "int prinlhex(va_list arguments, char *buf, unsigned int ibuf);"
+.BI "int prinlupx(va_list arguments, char *buf, unsigned int ibuf);"
+.BI "int prinhint(va_list arguments, char *buf, unsigned int ibuf);"
+.BI "int prinhunt(va_list arguments, char *buf, unsigned int ibuf);"
+.BI "int prinhoct(va_list arguments, char *buf, unsigned int ibuf);"
+.BI "int prinhhex(va_list arguments, char *buf, unsigned int ibuf);"
+.BI "int prinhupx(va_list arguments, char *buf, unsigned int ibuf);"
+.BI "int prinpint(va_list arguments, char *buf, unsigned int ibuf);"
+.BI "int prinnoct(va_list arguments, char *buf, unsigned int ibuf);"
+.BI "int prinnhex(va_list arguments, char *buf, unsigned int ibuf);"
+.BI "int prinnupx(va_list arguments, char *buf, unsigned int ibuf);"
+.BI "int prinsint(va_list arguments, char *buf, unsigned int ibuf);"
+.PP
 .BI "int (*get_print_func(const char *s, int index))(va_list, char *, unsigned int);"
 .BI "int ev_print_func(const char *s, int index);"
-.BI "unsigned int buf_con(char *buf, char c, unsigned int ibuf);"
+.PP
+.BI "unsigned int handl_buf(char *buf, char c, unsigned int ibuf);"
 .BI "int print_buf(char *buf, unsigned int nbuf);"
-.BI "char *short_oct(char *bnr, char *oct);"
-.BI "char *bin_array(char *binary, long int int_in, int isneg, int limit);"
-.BI "char *oct_array(char *bnr, char *oct);"
-.BI "char *long_oct(char *bnr, char *oct);"
-.BI "char *hex_array(char *bnr, char *hex, int isupp, int limit);"
+.PP
+.BI "char *fill_binary_array(char *binary, long int int_in, int isneg, int limit);"
+.BI "char *fill_oct_array(char *bnr, char *oct);"
+.BI "char *fill_long_oct_array(char *bnr, char *oct);"
+.BI "char *fill_short_oct_array(char *bnr, char *oct);"
+.BI "char *fill_hex_array(char *bnr, char *hex, int isupp, int limit);"
 .PP
 .SH DESCRIPTION
 The output function _printf() produce output according to a format. the function _printf converts the character strings that receives as argument and prints it on the standard output.
@@ -118,5 +121,7 @@ int main(void)
 	return (0);
 
 }
-
-
+.SH SEE ALSO
+.R printf(3)
+.SH AUTHORS
+Written by \fBSuara Ayomide\fR and \fBOni Remi\fR.
