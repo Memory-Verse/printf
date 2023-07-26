@@ -4,7 +4,7 @@
 #include <stdarg.h>
 #include <unistd.h>
 #include <stdlib.h>
-#include <stdio.h>
+
 {
 	char *type_arg;
 	int (*f)(va_list, char *, unsigned int);
