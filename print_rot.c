@@ -1,14 +1,14 @@
 #include "main.h"
 
 /**
- * rot - writes the str in ROT13
+ * print_rot - writes the str in ROT13
  * @arguments: input string
  * @buf: buffer pointer
  * @ibuf: index for buffer pointer
  * Return: number of chars printed.
  */
 
-int rot(va_list arguments, char *buf, unsigned int ibuf)
+int print_rot(va_list arguments, char *buf, unsigned int ibuf)
 {
 	char alf[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
 	char rot[] = "NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm";
@@ -20,7 +20,7 @@ int rot(va_list arguments, char *buf, unsigned int ibuf)
 	if (str == NULL)
 	{
 		for (i = 0; nill[i]; i++)
-			ibuf = buf_con(buf, nill[i], ibuf);
+			ibuf = handl_buf(buf, nill[i], ibuf);
 		return (6);
 	}
 	for (i = 0; str[i]; i++)
@@ -30,12 +30,12 @@ int rot(va_list arguments, char *buf, unsigned int ibuf)
 			if (str[i] == alf[j])
 			{
 				k = 1;
-				ibuf = buf_con(buf, rot[j], ibuf);
+				ibuf = handl_buf(buf, rot[j], ibuf);
 				break;
 			}
 		}
 		if (k == 0)
-			ibuf = buf_con(buf, str[i], ibuf);
+			ibuf = handl_buf(buf, str[i], ibuf);
 	}
 	return (i);
 }
