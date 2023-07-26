@@ -4,16 +4,7 @@
 #include <stdarg.h>
 #include <unistd.h>
 #include <stdlib.h>
-
-/**
- * struct format - struct for printer functions
- * @type_arg: identifier
- * @f: pointer to a printer functions
- *
- * Description: struct that stores pointers to a
- * printer functions.
- */
-typedef struct format
+#include <stdio.h>
 {
 	char *type_arg;
 	int (*f)(va_list, char *, unsigned int);
