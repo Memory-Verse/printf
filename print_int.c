@@ -9,20 +9,20 @@
  */
 int print_int(va_list arguments, char *buf, unsigned int ibuf)
 {
-	int int_enter;
+	int int_input;
 	unsigned int int_in, int_temp, i, div, isneg;
 
-	int_enter = va_arg(arguments, int);
+	int_input = va_arg(arguments, int);
 	isneg = 0;
-	if (int_enter < 0)
+	if (int_input < 0)
 	{
-		int_in = int_enter * -1;
-		ibuf = buf_con(buf, '-', ibuf);
+		int_in = int_input * -1;
+		ibuf = handl_buf(buf, '-', ibuf);
 		isneg = 1;
 	}
 	else
 	{
-		int_in = int_enter;
+		int_in = int_input;
 	}
 
 	int_temp = int_in;
@@ -36,7 +36,7 @@ int print_int(va_list arguments, char *buf, unsigned int ibuf)
 
 	for (i = 0; div > 0; div /= 10, i++)
 	{
-		ibuf = buf_con(buf, ((int_in / div) % 10) + '0', ibuf);
+		ibuf = handl_buf(buf, ((int_in / div) % 10) + '0', ibuf);
 	}
 	return (i + isneg);
 }

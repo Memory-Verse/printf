@@ -1,39 +1,39 @@
 #include "main.h"
 /**
- * print_hexdec - prints a decimal in hexadecimal
+ * print_hex - prints a decimal in hexadecimal
  * @arguments: input string
  * @buf: buffer pointer
  * @ibuf: index for buffer pointer
  * Return: number of chars printed
  */
-int print_hexdec(va_list arguments, char *buf, unsigned int ibuf)
+int print_hex(va_list arguments, char *buf, unsigned int ibuf)
 {
-	int int_enter, k, isnegative, count, first_digit;
+	int int_input, i, isnegative, count, first_digit;
 	char *hexadecimal, *binary;
 
-	int_enter = va_arg(arguments, int);
+	int_input = va_arg(arguments, int);
 	isnegative = 0;
-	if (int_enter == 0)
+	if (int_input == 0)
 	{
-		ibuf = buf_con(buf, '0', ibuf);
+		ibuf = handl_buf(buf, '0', ibuf);
 		return (1);
 	}
-	if (int_enter < 0)
+	if (int_input < 0)
 	{
-		int_enter = (int_enter * -1) - 1;
+		int_input = (int_input * -1) - 1;
 		isnegative = 1;
 	}
 	binary = malloc(sizeof(char) * (32 + 1));
-	binary = bin_array(binary, int_enter, isnegative, 32);
+	binary = fill_binary_array(binary, int_input, isnegative, 32);
 	hexadecimal = malloc(sizeof(char) * (8 + 1));
-	hexadecimal = hex_array(binary, hexadecimal, 0, 8);
-	for (first_digit = k = count = 0; hexadecimal[k]; k++)
+	hexadecimal = fill_hex_array(binary, hexadecimal, 0, 8);
+	for (first_digit = i = count = 0; hexadecimal[i]; i++)
 	{
-		if (hexadecimal[k] != '0' && first_digit == 0)
+		if (hexadecimal[i] != '0' && first_digit == 0)
 			first_digit = 1;
 		if (first_digit)
 		{
-			ibuf = buf_con(buf, hexadecimal[k], ibuf);
+			ibuf = handl_buf(buf, hexadecimal[i], ibuf);
 			count++;
 		}
 	}

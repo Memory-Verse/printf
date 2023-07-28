@@ -1,14 +1,14 @@
 #include "main.h"
 
 /**
- * short_oct - calculates a short octal number
+ * fill_short_oct_array - calculates a short octal number
  *
  * @bnr: array where is stored the binary.
  * @oct: array where is stored the octal.
  *
  * Return: binary array.
  */
-char *short_oct(char *bnr, char *oct)
+char *fill_short_oct_array(char *bnr, char *oct)
 {
 	int op, i, j, ioct, limit;
 

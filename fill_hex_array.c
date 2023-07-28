@@ -1,7 +1,7 @@
 #include "main.h"
 
 /**
- * hex_array - writes the character c to stdout
+ * fill_hex_array - writes the character c to stdout
  *
  * @bnr: array where is stored the binary.
  * @hex: array where is stored the hexadecimal.
@@ -10,23 +10,24 @@
  * @limit: size of hex
  * Return: binary array.
  */
-char *hex_array(char *bnr, char *hex, int isupp, int limit)
+char *fill_hex_array(char *bnr, char *hex, int isupp, int limit)
 {
-	int pp, k, l, toalpha;
+	int op, i, j, toletter;
+
 	hex[limit] = '\0';
 	if (isupp)
-		toalpha = 55;
+		toletter = 55;
 	else
-		toalpha = 87;
-	for (k = (limit * 4) - 1; k >= 0; k--)
+		toletter = 87;
+	for (i = (limit * 4) - 1; i >= 0; i--)
 	{
-		for (pp = 0, l = 1; l <= 8; l *= 2, k--)
-			pp = ((bnr[k] - '0') * l) + pp;
-		k++;
-		if (pp < 10)
-			hex[k / 4] = pp + 48;
+		for (op = 0, j = 1; j <= 8; j *= 2, i--)
+			op = ((bnr[i] - '0') * j) + op;
+		i++;
+		if (op < 10)
+			hex[i / 4] = op + 48;
 		else
-			hex[k / 4] = pp + toalpha;
+			hex[i / 4] = op + toletter;
 	}
 	return (hex);
 }
