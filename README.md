@@ -1,0 +1,103 @@
+<p align="center">
+  <img src="http://www.alxafrica.com/wp-content/uploads/2022/01/header-logo.png"
+    alt="ALX Africa Logo">
+  </p>
+
+# C - printf
+
+Printf project is a project done by **[Clinton Sibanda](https://github.com/)** and **[Gbagome Livingstone](https://github.com/Memory-Verse/)**, 
+students of the ALX Software Engineering Programme.
+
+_printf() is a function that performs formatted output conversion and prints data. Its prototype is the following:
+
+	int _printf(const char *format, ...)
+
+
+	
+If the program runs successfully, the **return value** is the amount of chars printed.
+	
+| Specifier | Output |
+| ------------- | ------------- |
+| c  | Character  |
+| d or i | Signed decimal integer |
+| s  | String of characters  |
+| b  | Signed binary  |
+| o  | Signed octal  |
+| u  | Unsigned integer  |
+| x  | Unsigned hexadecimal  |
+| X  | Unsigned hexadecimal (uppercase)  |
+| p  | Pointer address  |
+| r  | Reverse string of characters |
+| R  | ROT13 translation of string |
+| S  | String with special chars replaced by their ASCII value  |
+| %  | Character  |
+
+| Flags | Description | Specifiers |
+| ------------- | ------------- | ------------- | 
+| +  | Prints a plus sign (+) when the argument is a positive number. In other case, prints a minus sign (-). | i, d |
+| (space) | Prints a blank space if the argument is a positive number | i, d |
+| #  | Prints 0, 0x and 0X for o, x and X specifiers, respectively. It doesn't print anything if the argument is zero | o, x, X |
+
+| Length | Description | Specifiers |
+| ------------- | ------------- | ------------- | 
+| l | Prints a long int or unsigned long int | i, d, o, u, x and X |
+| h | Prints a short int or unsigned short int | i, d, o, u, x and X |
+
+------------
+
+## Examples
+
+1. Printing the string of chars "Hello, Holberton":
+	+ Use: `_printf("Hello Hol%s.", "berton");`
+	+ Output: `Hello Holberton.`
+	
+2. Printing an integer number:
+	+ Use: `_printf("10 + 10 is equal to %d.", 20);`
+	+ Output: `10 + 10 is equal to 20.`
+	
+3. Printing a binary, octal and hexadecimal:
+	+ Use: `_printf("10 in binary is [%b], in octal is [%o] and in hexadecimal is [%x]", 5, 5, 5);`
+	+ Output: `10 in binary is [1010], in octal is [12] and in hexadecimal is [A]`
+	
+4. Printing a string codified in ROT13:
+	+ Use: `_printf("Hello in ROT13 is %R", "Hello");`
+	+ Output: `Hello in ROT13 is Urybb`
+
+Using flags and length tags:
+
+5. Printing the string of chars "Hello, Holberton":
+	+ Use: `_printf("2 * 2 = %+d and 5 * -5 = %+i", 4, -25);`
+	+ Output: `2 * 2 = +4 and 5 * -5 = -25`
+	
+6. Printing a long integer number and short integer number:
+	+ Use: `_printf("1 million as a long int is %ld, but as a short int is %hd", 1000000, 1000000);`
+	+ Output: `1 million as a long int is 1000000, but as a short int is 16960`
+
+
+------------
+
+## File Functions
+
+### _printf.c
+Own Printf Function That Performs Formatted Output Conversion And Print Data.
+
+------------
+
+### main.h
+Header File Where All Prototypes Are Saved.
+
+------------
+
+## ***Authors*** 👩‍💻👨‍💻
+
+* Clinton Sibanda <c0772323281@gmail.com>
+
+* Livingstone Terk <memoryverse1@gmail.com>
+
+------------
+
+## Technologies
+* Tested in `Ubuntu 20.04 LTS`
+* Written with `vim`
+
+------------
