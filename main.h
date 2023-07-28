@@ -1,61 +1,49 @@
-#ifndef _MAIN_H_
-#define _MAIN_H_
+#ifndef MAIN_H
+#define MAIN_H
 
-#include <stdarg.h>
-#include <unistd.h>
 #include <stdlib.h>
+#include <stdarg.h>
+
 /**
- * struct print - struct for printer functions
- * @type_arg: identifier
- * @f: pointer to a printer functions
- *
- * Description: struct that stores pointers to a
- * printer functions.
+ * struct flag - struct containing flag to "turn on"
+ * when a flag specifier is passed to _printf()
+ * @plus: flag for the '+' character
+ * @space: flag for the ' ' character
+ * @hash: flag for the '#' character
  */
-typedef struct print
-
+typedef struct flag
 {
-	char *type_arg;
-	int (*f)(va_list, char *, unsigned int);
-} print_b;
+	int plus;
+	int space;
+	int hash;
+} flag_opter;
 
+typedef struct printOpter
+{
+	char c;
+	int (*f)(va_list ap, flag_opter *f);
+} po;
+
+int printOctal(va_list l, flag_opter *f);
+char *convert(unsigned long int num, int base, int lowercase);
 int _printf(const char *format, ...);
-int print_character(va_list arguments, char *buf, unsigned int ibuf);
-int print_string(va_list arguments, char *buf, unsigned int ibuf);
-int print_int(va_list arguments, char *buf, unsigned int ibuf);
-int print_dec_bnr(va_list arguments, char *buf, unsigned int ibuf);
-int print_unt_int(va_list arguments, char *buf, unsigned int ibuf);
-int print_dec_oct(va_list arguments, char *buf, unsigned int ibuf);
-int print_hexdec(va_list arguments, char *buf, unsigned int ibuf);
-int print_dechex(va_list arguments, char *buf, unsigned int ibuf);
-int print_lupx(va_list arguments, char *buf, unsigned int ibuf);
-int print_shint(va_list arguments, char *buf, unsigned int ibuf);
-int rev(va_list arguments, char *buf, unsigned int ibuf);
-int print_shunt(va_list arguments, char *buf, unsigned int ibuf);
-int print_hoct(va_list arguments, char *buf, unsigned int ibuf);
-int print_shhex(va_list arguments, char *buf, unsigned int ibuf);
-int print_hupx(va_list arguments, char *buf, unsigned int ibuf);
-int print_int_sym(va_list arguments, char *buf, unsigned int ibuf);
-int print_noct(va_list arguments, char *buf, unsigned int ibuf);
-int print_strv(va_list arguments, char *buf, unsigned int ibuf);
-int print_address(va_list arguments, char *buf, unsigned int ibuf);
-int rot(va_list arguments, char *buf, unsigned int ibuf);
-int print_long_int(va_list arguments, char *buf, unsigned int ibuf);
-int print_lunt(va_list arguments, char *buf, unsigned int ibuf);
-int print_loct(va_list arguments, char *buf, unsigned int ibuf);
-int print_prg(va_list __attribute__((unused)), char *, unsigned int);
-int print_lhex(va_list arguments, char *buf, unsigned int ibuf);
-int print_hex(va_list arguments, char *buf, unsigned int ibuf);
-int print_upper_hex(va_list arguments, char *buf, unsigned int ibuf);
-int print_sint(va_list arguments, char *buf, unsigned int ibuf);
-int (*get_print_func(const char *s, int index))(va_list, char *, unsigned int);
-int ev_print_func(const char *s, int index);
-unsigned int buf_con(char *buf, char c, unsigned int ibuf);
-int print_buf(char *buf, unsigned int nbuf);
-char *short_oct(char *bnr, char *oct);
-char *bin_array(char *binary, long int int_in, int isneg, int limit);
-char *oct_array(char *bnr, char *oct);
-char *long_oct(char *bnr, char *oct);
-char *hex_array(char *bnr, char *hex, int isupp, int limit);
+int (*getPrint(char s))(va_list, flag_opter *);
+int getFlag(char s, flag_opter *f);
+int printString(va_list l, flag_opter *f);
+int printChar(va_list l, flag_opter *f);
+int _putchar(char c);
+int _puts(char *str);
+int printRot13(va_list l, flag_opter *f);
+int printRev(va_list l, flag_opter *f);
+int printBigS(va_list l, flag_opter *f);
+int printAddress(va_list l, flag_opter *f);
+int printPercent(va_list l, flag_opter *f);
+int printInt(va_list l, flag_opter *f);
+void printNumber(int n);
+int printUnsigned(va_list l, flag_opter *f);
+int countDigit(int i);
+int printHex(va_list l, flag_opter *f);
+int printHexBig(va_list l, flag_opter *f);
+int printBinary(va_list l, flag_opter *f);
 
 #endif
